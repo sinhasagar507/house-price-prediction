@@ -2,6 +2,7 @@ import pickle
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_option_menu import option_menu
+from utilities import numerical_rating
 
 # Load the model
 filename = "saved_models/rf_dep.pkl"
@@ -16,18 +17,24 @@ def select_widget(key):
         label="",
         label_visibility="collapsed",
         options=(
-            1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0
+            "Very Poor", "Poor", "Fair", "Below Average", "Average","Cannot Say", "Above Average", "Good", "Very Good", "Excellent", "Very Excellent"
         )
     )
+
+
+def tech():
+    pass
 
 
 def pred():
     st.title("RETAIL HOUSE PRICE ESTIMATOR")
 
     option_overallQuality = select_widget("overallQuality")
+    option_overallQuality = numerical_rating(option_overallQuality)
     st.write("Rates build material quality and house finish")
 
     option_overallCondition = select_widget("overallCondition")
+    option_overallCondition = numerical_rating(option_overallCondition)
     st.write("Rates overall house condition")
 
     livingRoomArea = st.number_input("", min_value=334.0, max_value=4650.0)
@@ -74,7 +81,7 @@ def pred():
             garageCarCapacity
         ]])
         preds_final = round(preds[0], 2)
-        st.info(f'**The compressive   of the concrete mixture is {preds_final}**')
+        st.info(f'**The overall selling price of the house is {int(round(preds_final, 2))}**$')
 
 
 with st.sidebar:
@@ -93,29 +100,27 @@ with st.sidebar:
 def ml():
     st.write(
         "To view the complete code for the end-to-end project, visit our [GitHub](https://github.com/sinhasagar507/self-curated-learning/tree/master/Statistical%20ML/Housing%20Prices%20Prediction)")
-    components.iframe("https://github.com/sinhasagar507/self-curated-learning/blob/master/Statistical%20ML/Housing%20Prices%20Prediction/predictions.ipynb",
-                      height=1000, )
+    components.iframe(
+        "https://www.kaggle.com/embed/sagarsinha/housing-prices-prediction?kernelSessionId=112546641",
+        height=1000, )
 
 
 if choose == "Home":
     st.title('Machine Learning-Retail Sector')
-    st.write('')
-
     st.subheader("Use Case")
     st.markdown(
-        "<p style='text-align: justify;'>Write something</p>",
-        unsafe_allow_html=True)
-
+        "<p style='text-align: justify;'>The purpose of house price prediction is to provide a basis for pricing between buyers and sellers. By viewing transaction records, buyers can understand whether they have received a fair price for a house, and sellers can evaluate the price at which they can sell a house along a specific road section</p>"
+        , unsafe_allow_html=True)
     st.write('')
-    st.write('')
-    st.subheader("What's the solution ?")
+    st.subheader("Solution?")
     st.markdown(
         '''
-            <p style='text-align: justify;'>This mini-project is an attempt at understanding various residential properties which predominantly affects house prices. A description of the most relevant parameters affecting sale prices is as under
+            <p style='text-align: justify;'>This mini-project is an attempt at understanding various residential properties which predominantly affects house prices. A description of the most relevant parameters affecting sale prices. The sale prices, which are often a result of several parameters, can aid in 
             <br>
+            <p>Note, all areas are in <b>SQUARE FEET</b></p>
             <ul>
-                <li>Overall Build Material Quality</li>
-                <li>Overall House Condition</li>
+                <li>Overall Build Material Quality - Scored on a scale from 1 to 10, with 1 representing "Very Poor" and 10 representing "Excellent"</li>
+                <li>Overall House Condition - Scored on a scale from 1 to 10, with a similar description as in Overall Build Material Quality</li>
                 <li>Living Room Area</li>
                 <li>First Floor Finished Area</li>
                 <li>Basement Area</li>
@@ -127,7 +132,7 @@ if choose == "Home":
                 <li>Year when garage was built</li>
                 <li>Porch Area</li>
                 <li>Garage Area</li>
-                <li>Garage Car Capacity</li>
+                <li>Garage Car Capacity - Based on average Car Size in the given area </li>
             </ul>
             </p>
         '''
@@ -138,7 +143,7 @@ if choose == "Home":
         unsafe_allow_html=True)
 
 elif choose == "Tech Stack":
-    pass
+    tech()
 elif choose == "Predictor":
     pred()
 elif choose == "ML Code":

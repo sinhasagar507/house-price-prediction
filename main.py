@@ -31,7 +31,7 @@ def get_House_fs(*, request: HouseFeatures):
         overallQuality = 3
     elif overallQuality == "Below Average":
         overallQuality = 4
-    elif overallQuality == "Average" or overallQuality == "Cannot say":
+    elif overallQuality == "Average" or overallQuality is None:
         overallQuality = 5
     elif overallQuality == "Above Average":
         overallQuality = 6
@@ -41,7 +41,7 @@ def get_House_fs(*, request: HouseFeatures):
         overallQuality = 8
     elif overallQuality == "Excellent":
         overallQuality = 9
-    elif overallQuality == "Very Excellent" or overallQuality is None:
+    elif overallQuality == "Very Excellent":
         overallQuality = 10
 
     results.update({"Overall Quality": overallQuality})
