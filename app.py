@@ -89,7 +89,7 @@ def pred():
 
 
 with st.sidebar:
-    choose = option_menu("Welcome", ["Home", "Tech Stack", "Predictor", "ML Code"],
+    choose = option_menu("Welcome", ["Home", "Predictor", "ML Code"],
                          icons=['house', 'stack', 'cpu', 'terminal'],
                          menu_icon='building', default_index=0,
                          styles={
