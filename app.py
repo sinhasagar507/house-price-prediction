@@ -27,6 +27,10 @@ def tech():
 
 
 def pred():
+    # st.markdown(
+    #     "<p style='text-align: justify;'></p>",
+    #     unsafe_allow_html=True)
+
     st.title("RETAIL HOUSE PRICE ESTIMATOR")
 
     option_overallQuality = select_widget("overallQuality")
@@ -106,7 +110,7 @@ def ml():
 
 
 if choose == "Home":
-    st.title('Machine Learning-Retail Sector')
+    st.title('Machine Learning-Real Estate Sector')
     st.subheader("Use Case")
     st.markdown(
         "<p style='text-align: justify;'>The purpose of house price prediction is to provide a basis for pricing between buyers and sellers. By viewing transaction records, buyers can understand whether they have received a fair price for a house, and sellers can evaluate the price at which they can sell a house along a specific road section</p>"
@@ -138,12 +142,9 @@ if choose == "Home":
         '''
         ,
         unsafe_allow_html=True)
-    st.markdown(
-        "<p style='text-align: justify;'></p>",
-        unsafe_allow_html=True)
 
-elif choose == "Tech Stack":
-    tech()
+# elif choose == "Tech Stack":
+#     tech()
 elif choose == "Predictor":
     pred()
 elif choose == "ML Code":
