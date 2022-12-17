@@ -1,5 +1,9 @@
 # Project 
-House Price Prediction using Machine Learning. The work is a modification of the 
+House Price Prediction using Machine Learning 
+
+## Tools and Technologies 
+- EDA and Machine Learning: Pandas, Numpy, Matplotlib, Seaborn, SKLearn
+- Testing and Deployment: FastAPI, Streamlit 
 
 ## Setup
 1. Set up a virtual environment using [virtualenv](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment) or [conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) and add <code>Python>=3.1.0</code> as your interpreter. If using <code>conda</code> then perform <code>conda install pip</code> for effective package management.  
@@ -8,5 +12,6 @@ House Price Prediction using Machine Learning. The work is a modification of the
 
 ## Hosted Model
 Head here to check your houses' selling price: https://sinhasagar507-house-price-prediction-app-ryqeid.streamlit.app
+
 
 
