@@ -8,6 +8,7 @@
 The Ames Housing Price Dataset is a well-known dataset in the data science community, often used for regression tasks. This project aims to build a predictive model to estimate housing prices based on various features of the houses. After achieving satisfactory results, the model was deployed on the Streamlit platform to create an interactive web application.
 
 ## Data Collection
+
 ### Sources and Datasets
 - **Ames Housing Price Dataset:**
   - A dataset that includes 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa.
